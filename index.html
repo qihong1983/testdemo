@@ -39,7 +39,7 @@
 </head>
 
 <body>
-    <p class="desc">web-view 组件加载网络 html 示例。点击下列按钮，跳转至其它页面。44</p>
+    <p class="desc">web-view 组件加载网络 html 示例。点击下列按钮，跳转至其它页面。55</p>
     <div class="btn-list">
         <button class="btn" type="button" data-action="navigateTo">navigateTo</button>
         <button class="btn" type="button" data-action="redirectTo">redirectTo</button>
@@ -81,59 +81,10 @@
             document.querySelector('.post-message-section').style.visibility = 'visible';
         }
 
-    </script>
-    <!-- <script type="text/javascript" src="https://js.cdn.aliyun.dcloud.net.cn/dev/uni-app/uni.webview.1.5.2.js"></script> -->
-    <script>
 
-        // document.addEventListener('UniAppJSBridgeReady', function () {
+        // 网页向小程序 postMessage 消息
+        dd.postMessage({ name: "测试web-view" });
 
-
-        // });
-
-
-        uni.postMessage({
-            data: {
-                action: 'message'
-            }
-        });
-
-        document.querySelector('.btn-list').addEventListener('click', function (evt) {
-            var target = evt.target;
-            if (target.tagName === 'BUTTON') {
-                var action = target.getAttribute('data-action');
-                switch (action) {
-                    case 'switchTab':
-                        uni.switchTab({
-                            url: '/pages/tabBar/API/API'
-                        });
-                        break;
-                    case 'reLaunch':
-                        uni.reLaunch({
-                            url: '/pages/tabBar/component/component'
-                        });
-                        break;
-                    case 'navigateBack':
-                        uni.navigateBack({
-                            delta: 1
-                        });
-                        break;
-                    default:
-                        uni[action]({
-                            url: '/pages/component/button/button'
-                        });
-                        break;
-                }
-            }
-        });
-
-
-        document.getElementById('postMessage').addEventListener('click', function () {
-            uni.postMessage({
-                data: {
-                    action: 'message'
-                }
-            });
-        });
 
         dd.onMessage = function (e) {
             console.log(e); //{'sendToWebView': '1'}
