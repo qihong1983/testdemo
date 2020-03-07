@@ -39,7 +39,7 @@
 </head>
 
 <body>
-    <p class="desc">web-view 组件加载网络 html 示例。点击下列按钮，跳转至其它页面。101</p>
+    <p class="desc">web-view 组件加载网络 html 示例。点击下列按钮，跳转至其它页面。102</p>
     <div class="btn-list">
         <button class="btn" type="button" data-action="navigateTo">navigateTo</button>
         <button class="btn" type="button" data-action="redirectTo">redirectTo</button>
@@ -47,9 +47,7 @@
         <button class="btn" type="button" data-action="reLaunch">reLaunch</button>
         <button class="btn" type="button" data-action="switchTab">switchTab</button>
     </div>
-    <div id="tt">
-        aaa
-    </div>
+    <button class="btn btn-red" type="button" id="tt">点一下看看可不可行</button>
     <div class="post-message-section">
         <p class="desc">网页向应用发送消息，注意：小程序端应用会在此页面后退时接收到消息。</p>
         <div class="btn-list">
@@ -85,6 +83,10 @@
         }
 
 
+        document.getElementById('tt').addEventListener("click", function () {
+            alert('这个能用吗');
+        });
+
         // 网页向小程序 postMessage 消息
 
         document.getElementById('postMessage').addEventListener('click', function () {
@@ -96,7 +98,7 @@
         dd.onMessage = function (e) {
             console.log(e); //{'sendToWebView': '1'}
 
-            document.getElementById('tt').innerText(e);
+
             // alert(e);
             // alert(JSON.stringify(e) + '33333');
 
