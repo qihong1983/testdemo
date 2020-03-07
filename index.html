@@ -39,7 +39,7 @@
 </head>
 
 <body>
-    <p class="desc">web-view 组件加载网络 html 示例。点击下列按钮，跳转至其它页面。100</p>
+    <p class="desc">web-view 组件加载网络 html 示例。点击下列按钮，跳转至其它页面。101</p>
     <div class="btn-list">
         <button class="btn" type="button" data-action="navigateTo">navigateTo</button>
         <button class="btn" type="button" data-action="redirectTo">redirectTo</button>
@@ -96,7 +96,7 @@
         dd.onMessage = function (e) {
             console.log(e); //{'sendToWebView': '1'}
 
-            document.getElementById('postMessage').innerText(e);
+            document.getElementById('tt').innerText(e);
             // alert(e);
             // alert(JSON.stringify(e) + '33333');
 
