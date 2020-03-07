@@ -47,6 +47,9 @@
         <button class="btn" type="button" data-action="reLaunch">reLaunch</button>
         <button class="btn" type="button" data-action="switchTab">switchTab</button>
     </div>
+    <div id="tt">
+        aaa
+    </div>
     <div class="post-message-section">
         <p class="desc">网页向应用发送消息，注意：小程序端应用会在此页面后退时接收到消息。</p>
         <div class="btn-list">
@@ -93,8 +96,8 @@
         dd.onMessage = function (e) {
             console.log(e); //{'sendToWebView': '1'}
 
-
-            alert(e);
+            document.getElementById('postMessage').innerText(e);
+            // alert(e);
             // alert(JSON.stringify(e) + '33333');
 
             // dd.alert({
