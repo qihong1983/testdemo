@@ -39,7 +39,7 @@
 </head>
 
 <body>
-    <p class="desc">web-view 组件加载网络 html 示例。点击下列按钮，跳转至其它页面。55</p>
+    <p class="desc">web-view 组件加载网络 html 示例。点击下列按钮，跳转至其它页面。88</p>
     <div class="btn-list">
         <button class="btn" type="button" data-action="navigateTo">navigateTo</button>
         <button class="btn" type="button" data-action="redirectTo">redirectTo</button>
@@ -83,16 +83,24 @@
 
 
         // 网页向小程序 postMessage 消息
-        dd.postMessage({ name: "测试web-view" });
+
+        document.getElementById('postMessage').addEventListener('click', function () {
+            dd.postMessage({ name: "测试web-view" });
+        });
+
 
 
         dd.onMessage = function (e) {
             console.log(e); //{'sendToWebView': '1'}
 
-            uni.showModal({
+
+            dd.alert({
                 content: JSON.stringify(e),
-                showCancel: false
             });
+            // uni.showModal({
+            //     content: JSON.stringify(e),
+            //     showCancel: false
+            // });
         }
     </script>
 </body>
