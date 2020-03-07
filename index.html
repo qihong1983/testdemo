@@ -84,6 +84,16 @@
 
         // 网页向小程序 postMessage 消息
         dd.postMessage({ name: "测试web-view" });
+
+
+        dd.onMessage = function (e) {
+            console.log(e); //{'sendToWebView': '1'}
+
+            uni.showModal({
+                content: JSON.stringify(e),
+                showCancel: false
+            });
+        }
     </script>
 </body>
 
