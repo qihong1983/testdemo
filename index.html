@@ -7,7 +7,7 @@
         content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
     <title>网络网页</title>
     <style type="text/css">
-        /* .btn {
+        .btn {
             display: block;
             margin: 20px auto;
             padding: 5px;
@@ -33,7 +33,7 @@
 
         .post-message-section {
             visibility: hidden;
-        } */
+        }
     </style>
     <script type="text/javascript" src="https://appx/web-view.min.js"></script>
 </head>
@@ -82,8 +82,45 @@
         }
 
 
-        // 网页向小程序 postMessage 消息
-        dd.postMessage({ name: "测试web-view" });
+        document.addEventListener('UniAppJSBridgeReady', function () {
+            document.querySelector('.btn-list').addEventListener('click', function (evt) {
+                var target = evt.target;
+                if (target.tagName === 'BUTTON') {
+                    var action = target.getAttribute('data-action');
+                    switch (action) {
+                        case 'switchTab':
+                            uni.switchTab({
+                                url: '/pages/tabBar/API/API'
+                            });
+                            break;
+                        case 'reLaunch':
+                            uni.reLaunch({
+                                url: '/pages/tabBar/component/component'
+                            });
+                            break;
+                        case 'navigateBack':
+                            uni.navigateBack({
+                                delta: 1
+                            });
+                            break;
+                        default:
+                            uni[action]({
+                                url: '/pages/component/button/button'
+                            });
+                            break;
+                    }
+                }
+            });
+            document.getElementById('postMessage').addEventListener('click', function () {
+                uni.postMessage({
+                    data: {
+                        action: 'message'
+                    }
+                });
+            });
+        });
+
+
 
 
         dd.onMessage = function (e) {
